@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .nodetype,
+        .nodevalue,
+        .selectednode {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #node-names,
+        #node-value,
+        .node-display,
+        .selected-node,
+        .submit,
+        .update,
+        .delete {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .node-display {
+            background-color: #d5d21d;
+            color: white;
+        }
+
+        .submit,
+        .update,
+        .delete {
+            background-color: #d116ea;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit:hover,
+        .update:hover,
+        .delete:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="nodeForm">
+        <label for="nodetype" class="nodetype">Node Type</label>
+        <select name="node-names" id="node-names">
+            <option value="Parent Node">Parent Node</option>
+            <option value="Child Node">Child Node</option>
+        </select>
+
+        <label for="nodevalue" class="nodevalue">Node Value</label>
+        <input type="text" id="node-value" class="node-value" placeholder="Write node value here">
+
+        <button class="submit" type="button" onclick="addNode()">Add Node</button>
+
+        <label class="selectednode">Selected Node</label>
+        <input type="text" id="selected-node" class="selected-node" placeholder="Node Name">
+        <button class="update" onclick="updateNode()">Update</button>
+        <button class="delete" onclick="deleteNode()">Delete</button>
+
+        
+    </form>
+    <div id="displayValues"></div>
+
+    <script>
+        function addNode() {
+            var nodeType = document.getElementById('node-names').value;
+            var nodeValue = document.getElementById('node-value').value;
+
+            var displayDiv = document.createElement('div');
+            displayDiv.className = 'node-display';
+            displayDiv.innerHTML = nodeType;
+
+            var displayValues = document.getElementById('displayValues');
+            if (nodeType === 'Parent Node') {
+                displayValues.insertBefore(displayDiv, displayValues.firstChild);
+            } else {
+                displayValues.appendChild(displayDiv);
+            }
+        }
+
+        function updateNode() {
+            // Your update logic here
+        }
+
+        function deleteNode() {
+            // Your delete logic here
+        }
+    </script>
+</body>
+</html>
+
